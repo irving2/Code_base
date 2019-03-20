@@ -42,8 +42,6 @@ if __name__ == '__main__':
     pq.push(f2,2)
     pq.push({'bar':'foo'},10)
 
-    print pq
-    print pq.pop()
 
 
 
