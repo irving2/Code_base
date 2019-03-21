@@ -10,5 +10,9 @@ class Messenger:
 
 m = Messenger(info="some information", b=['a', 'list'])
 m.more = 11
-print m.info, m.b, m.more
-print m.__dict__
+print (m.info, m.b, m.more)
+print (m.__dict__)
+
+
+*a,b ='hello'
+print(b)

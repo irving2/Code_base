@@ -27,6 +27,14 @@ a = {'a':1,
 b = {'a':1,
      'w':100}
 
-res= {k:a[k] for k in a.keys()-b.keys()}
-print(res)
+# res= {k:a[k] for k in a.keys()-b.keys()}
+# print(res)
 
+from collections import Counter
+words  = ['i','a','m']
+c = Counter(words)
+
+more_words = ['m','w','e','n']
+for w in more_words:
+     c[w]+=1
+print('end')
