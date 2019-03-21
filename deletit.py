@@ -38,3 +38,5 @@ more_words = ['m','w','e','n']
 for w in more_words:
      c[w]+=1
 print('end')
+
+# 在公司的一些修改
