@@ -27,7 +27,7 @@ class PriorityQueue:
         return 'PriorityQueue instance:%s'%self._queue
 
 '''
-tuple之间的比较大小运算,先拿第一个元素比较，如果相等就拿第二个元素比较，以此类推。这也是self._index的作用，当优先级相同时会拿self._index来比较。如果没有self._index，不能直接拿foo实例来比较，python3会抛出错误。但是python2.7不会报错，不知为何？
+tuple之间的比较大小运算,先拿第一个元素比较，如果相等就拿第二个元素比较，以此类推。这也是self._index的作用，当优先级相同时会拿self._index来比较。如果没有self._index，不能直接拿foo实例来比较，python3会抛出错误。但是python2.7不会报错。
 '''
 
 if __name__ == '__main__':
