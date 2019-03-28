@@ -29,3 +29,6 @@ max_element = max(x['shares'] for x in portfolio)  # 75
 
 import operator
 max_dict = max(portfolio,key=operator.itemgetter('shares'))  # {'name': 'YHOO', 'shares': 75}
+
+
+
