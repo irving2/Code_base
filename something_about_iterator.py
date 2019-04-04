@@ -79,7 +79,6 @@ class Node_n:
 # 反向迭代
 '''
 从相反的方向迭代对象，可以使用reversed()函数，但是要求对象里面的元素是已知的，需要先转换成list.
-
 '''
 
 # f = open('somefile')
