@@ -1,0 +1,26 @@
+# 用sox 获取语音文件的信息
+sox --i name.wav
+sox --i -D name.wav  获取时间长度
+
+wavefile和wave库读取文件中保存的原数据，PCM_16就返回整数，shape=[samples,nchannels]
+
+
+librsa 的load方法，会自动做归一化处理，返回[-1,1]的浮点数，shape=[nchannels, nsamples],和wavefile和wave库需要进行transpose.
+底层调用soundfile.py 的_array_io 方法。
+知道带宽，保存文件时可以将浮点数转换为该带宽对应的整数，然后保存。
+normFact = {'int8': (2**7) -1,
+            'int16': (2**15)-1,
+            'int24': (2**23)-1,
+            'int32': (2**31)-1,
+            'int64': (2**63)-1,
+            'float32': 1.0,
+            'float64': 1.0}
+
+用scipy.signal.spectrogram 计算声谱图时，传入归一化的data和不归一化的整数，得到的sxx的值是完全不同的。传入[0,1]浮点数得到的值很小。可见必须传入原始的振幅数据。
+
+已经验证，用wavefile.read 的pcm_16  wav文件 ，再用wavefile.write 保存到磁盘.使用librosa.load 后,自动归一化[-1,1]，使用normFact转换为int,结果匹配。已经验证librosa底层不是依靠识别到保存的类型为int16,然后转换为[-1,1]浮点数，因为用int64保存文件，还是能知道带宽为2，有可能是对wav文件，默认采用int16方案转换为[-1,1]. librosa创建的SoundFile对象有一个属性subtype_info='Signed 16 bit PCM'。
+
+
+
+
+

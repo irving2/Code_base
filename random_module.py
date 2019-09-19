@@ -24,10 +24,10 @@ random.shuffle(a)
 print(a)            # [5, 3, 2, 6, 1, 4]
 
 # 生成0~10之间的随机整数,包括10.
-random.randint(0,1)
+random.randint(0, 1)
 
 # 随机获得一个3位数(二进制)的整数
-random.getrandbits(k=3)  #  6
+random.getrandbits(k=3)  #6
 
 # 根据一些分布函数来生成随机数
 random.uniform()   # 均匀分布
