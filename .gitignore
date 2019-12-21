@@ -117,6 +117,7 @@ dmypy.json
 *.png
 *.xml
 *.ts
-trace
-experiments
+*.wav
+*.mp3
+*.flac
 

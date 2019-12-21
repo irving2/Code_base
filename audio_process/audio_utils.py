@@ -14,7 +14,7 @@ from pydub.utils import get_array_type
 from scipy.io import wavfile
 import numpy as np
 from subprocess import PIPE, run
-
+import subprocess
 
 # os.system('ffmpeg -i quite_pure_record.mp3 -acodec pcm_s16le -ac 1 -ar 16000 quite_pure_record.wav')     # 将mp3 转换为wav
 
@@ -119,6 +119,14 @@ def command_out(command):
     result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
     return result.stdout     # str类型
 
+def multi_cmd(*args):
+    # 用subprocess执行多个命令行,并且捕获输出结果,如果不需要捕获结果就用subprocess.call(cmd,shell=True,stdout=subpross.DEVNULL)
+    for cmd in args:
+        p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+        out = p.stdout.readlines()
+        for line in out:
+            print(line.strip())
+
 def cal_time(folder,audio_type='.wav'):
     def transform_time(sec):
         return datetime.timedelta(seconds=sec)  # days ,hours, minuntes, seconds
@@ -141,6 +149,12 @@ def cal_time(folder,audio_type='.wav'):
     return sec_to_hours(total)
 
 
+
+
 if __name__ == '__main__':
-    ret = cal_time('/home/chenwen/snr_estimate/dataset/speak_num_wav')
-    print(ret)
+    import soundfile
+    import librosa
+    filename = '../T0055G0167S0004.wav'
+    data,sr = librosa.load(filename)
+    print(data)
+    print(librosa.get_duration(data))
